@@ -89,10 +89,6 @@ brainfuck_LDFLAGS = \
 brainfuck_LDADD = \
 	$(NULL)
 
-brainfuck_CLEANFILES = \
-	brainfuck.bin \
-	$(NULL)
-
 # ----------------------------------------------------------------------------
 # build brainfuck
 # ----------------------------------------------------------------------------
@@ -107,7 +103,7 @@ $(brainfuck_PROGRAM): $(brainfuck_OBJECTS)
 # ----------------------------------------------------------------------------
 
 clean_brainfuck:
-	$(RM) $(RMFLAGS) $(brainfuck_OBJECTS) $(brainfuck_CLEANFILES)
+	$(RM) $(RMFLAGS) $(brainfuck_OBJECTS) $(brainfuck_PROGRAM)
 
 # ----------------------------------------------------------------------------
 # check brainfuck
