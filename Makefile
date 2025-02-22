@@ -19,6 +19,7 @@
 # global environment
 # ----------------------------------------------------------------------------
 
+TOPDIR   = $(CURDIR)
 OPTLEVEL = -O2 -g
 WARNINGS = -Wall
 EXTRAS   = -fstack-protector-strong
@@ -26,7 +27,8 @@ CC       = gcc
 CFLAGS   = -std=c99 $(OPTLEVEL) $(WARNINGS) $(EXTRAS)
 CXX      = g++
 CXXFLAGS = -std=c++14 $(OPTLEVEL) $(WARNINGS) $(EXTRAS)
-CPPFLAGS = -I. -D_DEFAULT_SOURCE -D_FORTIFY_SOURCE=2
+CPP      = cpp
+CPPFLAGS = -I. -I$(TOPDIR)/src -D_DEFAULT_SOURCE -D_FORTIFY_SOURCE=2
 LD       = g++
 LDFLAGS  = -L.
 CP       = cp
@@ -39,10 +41,10 @@ RMFLAGS  = -f
 # ----------------------------------------------------------------------------
 
 .c.o:
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 .cc.o:
-	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $<
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) -o $@ $<
 
 # ----------------------------------------------------------------------------
 # global targets
@@ -66,21 +68,21 @@ check: check_brainfuck
 brainfuck_PROGRAM = brainfuck.bin
 
 brainfuck_SOURCES = \
-	Brainfuck.cc \
-	Console.cc \
-	Program.cc \
+	src/Brainfuck.cc \
+	src/Console.cc \
+	src/Program.cc \
 	$(NULL)
 
 brainfuck_HEADERS = \
-	Brainfuck.h \
-	Console.h \
-	Program.h \
+	src/Brainfuck.h \
+	src/Console.h \
+	src/Program.h \
 	$(NULL)
 
 brainfuck_OBJECTS = \
-	Brainfuck.o \
-	Console.o \
-	Program.o \
+	src/Brainfuck.o \
+	src/Console.o \
+	src/Program.o \
 	$(NULL)
 
 brainfuck_LDFLAGS = \

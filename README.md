@@ -12,27 +12,25 @@ Under Debian and derivatives (Ubuntu, Mint, ...):
 apt-get install build-essential
 ```
 
-### Build and run the project
-
-Move to the `src` directory:
-
-```
-cd src
-```
-
-Build the sources:
+### Build the project
 
 ```
 make
 ```
 
-Run the tests:
- 
+### Clean the project
+
+```
+make clean
+```
+
+### Check the project
+
 ```
 make check
 ```
 
-Execute the interpreter:
+### Execute the project
 
 ```
 ./brainfuck.bin [EXPRESSIONS...]
